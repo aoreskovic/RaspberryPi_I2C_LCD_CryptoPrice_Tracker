@@ -23,7 +23,7 @@ def getChange(coin):
             if name["percent_change_1h"][0] == "-":
                 return name["percent_change_1h"]
             else:
-                return "+" + name["percent_change_1h"]
+                return "+" + (name["percent_change_1h"]+"0")[0:3]
     return 0
 
 
