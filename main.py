@@ -5,9 +5,10 @@ from time import *
 
 
 sleep(5)
-response = requests.get("https://api.coinmarketcap.com/v1/ticker/?limit=15")
+response = requests.get("https://api.coinmarketcap.com/v1/ticker/?limit=14")
 
-mylcd = I2C_LCD_driver.lcd()
+mylcd1 = I2C_LCD_driver.lcd(0x27)
+mylcd2 = I2C_LCD_driver.lcd(0x26)
 
 parsedData = response.json()
 
@@ -28,13 +29,17 @@ def getChange(coin):
 
 
 
-mylcd.lcd_clear()
-mylcd.lcd_display_string("BTC " + getPrice("BTC") + " $ " + getChange("BTC") + "%", 1, 0)
-mylcd.lcd_display_string("ETH " + getPrice("ETH") + " $ " + getChange("ETH") + "%", 2, 0)
-mylcd.lcd_display_string("LTC " + getPrice("LTC") + " $ " + getChange("LTC") + "%", 3, 0)
-mylcd.lcd_display_string("ADA " + getPrice("ADA") + " $ " + getChange("ADA") + "%", 4, 0)
-#mylcd.lcd_display_string("XRP " + getPrice("XRP"), 4, 10)
-#mylcd.lcd_display_string("IOT " + getPrice("MIOTA"), 3, 0)
+mylcd1.lcd_clear()
+mylcd1.lcd_display_string("BTC " + getPrice("BTC") + " $ " + getChange("BTC") + "%", 1, 0)
+mylcd1.lcd_display_string("ETH " + getPrice("ETH") + " $ " + getChange("ETH") + "%", 2, 0)
+mylcd1.lcd_display_string("LTC " + getPrice("LTC") + " $ " + getChange("LTC") + "%", 3, 0)
+mylcd1.lcd_display_string("ADA " + getPrice("ADA") + " $ " + getChange("ADA") + "%", 4, 0)
+
+mylcd2.lcd_clear()
+mylcd2.lcd_display_string("XRP " + getPrice("XRP") + " $ " + getChange("XRP") + "%", 1, 0)
+mylcd2.lcd_display_string("IOT " + getPrice("MIOTA") + " $ " + getChange("MIOTA") + "%", 2, 0)
+mylcd2.lcd_display_string("NEM " + getPrice("XEM") + " $ " + getChange("XEM") + "%", 3, 0)
+mylcd2.lcd_display_string("EOS " + getPrice("EOS") + " $ " + getChange("EOS") + "%", 4, 0)
     
 
 

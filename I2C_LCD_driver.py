@@ -105,8 +105,8 @@ Rs = 0b00000001 # Register select bit
 
 class lcd:
    #initializes objects and lcd
-   def __init__(self):
-      self.lcd_device = i2c_device(ADDRESS)
+   def __init__(self, lcd_addr):
+      self.lcd_device = i2c_device(lcd_addr)
 
       self.lcd_write(0x03)
       self.lcd_write(0x03)
